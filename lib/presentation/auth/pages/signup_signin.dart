@@ -6,9 +6,7 @@ import 'package:spotify_bloc/common/widgets/button/basic_app_button.dart';
 import 'package:spotify_bloc/core/configs/assets/app_images.dart';
 import 'package:spotify_bloc/core/configs/assets/app_vectors.dart';
 import 'package:spotify_bloc/core/configs/theme/app_colors.dart';
-import 'package:spotify_bloc/presentation/auth/pages/signin.dart';
 import 'package:spotify_bloc/presentation/auth/pages/signup.dart';
-import 'package:spotify_bloc/presentation/splash/home.dart';
 
 class SignUpSignInScreen extends StatelessWidget {
   const SignUpSignInScreen({super.key});
