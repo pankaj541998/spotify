@@ -1,10 +1,16 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spotify_bloc/common/widgets/appbar/basic_appbar.dart';
+import 'package:spotify_bloc/data/models/auth/signin_auth_model.dart';
+import 'package:spotify_bloc/domain/usecases/auth/signin.dart';
 import 'package:spotify_bloc/presentation/auth/pages/signup.dart';
 
 import '../../../common/widgets/button/basic_app_button.dart';
 import '../../../core/configs/assets/app_vectors.dart';
+import '../../../service_locator.dart';
+import '../../home/pages/home.dart';
 
 class SignInscreen extends StatelessWidget {
   SignInscreen({super.key});
@@ -30,12 +36,40 @@ class SignInscreen extends StatelessWidget {
             const SizedBox(height: 25),
             _inputField(context, _email, "Enter Email"),
             _inputField(context, _password, "Enter Password"),
-            BasicAppButton(onPressed: () {}, title: "Log in")
+            BasicAppButton(
+                onPressed: () async {
+                  var result = await sl<SignUInUsecase>().call(
+                      params: SigninRequestUser(
+                          email: _email.text.toString(),
+                          password: _password.text.toString()));
+                  result.fold(
+                    (l) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(l.toString()),
+                        ),
+                      );
+                    },
+                    (r) {
+                      log("r $r");
+
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HomePage(),
+                        ),
+                        (route) => false,
+                      );
+                    },
+                  );
+                },
+                title: "Log in")
           ],
         ),
       ),
     );
   }
+
   Widget _signInText() {
     return const Text(
       'Sign in',
