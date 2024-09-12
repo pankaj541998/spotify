@@ -1,10 +1,16 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spotify_bloc/common/widgets/appbar/basic_appbar.dart';
 import 'package:spotify_bloc/common/widgets/button/basic_app_button.dart';
+import 'package:spotify_bloc/data/models/auth/create_user_auth_modal.dart';
 import 'package:spotify_bloc/presentation/auth/pages/signin.dart';
 
 import '../../../core/configs/assets/app_vectors.dart';
+import '../../../domain/usecases/auth/signup.dart';
+import '../../../service_locator.dart';
+import '../../home/pages/home.dart';
 
 class SignUpscreen extends StatelessWidget {
   SignUpscreen({super.key});
@@ -33,7 +39,41 @@ class SignUpscreen extends StatelessWidget {
             _inputField(context, _fullName, "Enter Full Name"),
             _inputField(context, _email, "Enter Email"),
             _inputField(context, _password, "Enter Password"),
-            BasicAppButton(onPressed: () {}, title: "Create Account")
+            BasicAppButton(
+                onPressed: () async {
+                  var result = await sl<SignUpUsecase>().call(
+                    params: CreateUserRequest(
+                      username: _fullName.text.toString(),
+                      email: _email.text.toString(),
+                      password: _password.text.toString(),
+                    ),
+                  );
+                  result.fold(
+                    (l) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(l.toString()),
+                        ),
+                      );
+                    },
+                    (r) {
+                      log("r $r");
+                      ScaffoldMessenger.of(context).showSnackBar(
+                       const SnackBar(
+                          content: Text("Sign up successfully"),
+                        ),
+                      );
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomePage(),
+                        ),
+                        (route) => false,
+                      );
+                    },
+                  );
+                },
+                title: "Create Account")
           ],
         ),
       ),

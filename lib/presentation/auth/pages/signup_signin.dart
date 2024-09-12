@@ -8,6 +8,8 @@ import 'package:spotify_bloc/core/configs/assets/app_vectors.dart';
 import 'package:spotify_bloc/core/configs/theme/app_colors.dart';
 import 'package:spotify_bloc/presentation/auth/pages/signup.dart';
 
+import 'signin.dart';
+
 class SignUpSignInScreen extends StatelessWidget {
   const SignUpSignInScreen({super.key});
 
@@ -91,7 +93,7 @@ class SignUpSignInScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => SignUpscreen(),
+                                builder: (context) => SignInscreen(),
                               ),
                             );
                           },
