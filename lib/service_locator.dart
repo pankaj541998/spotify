@@ -1,5 +1,5 @@
 import 'package:get_it/get_it.dart';
-import 'package:spotify_bloc/data/source/auth/auth__firebase_services.dart';
+import 'package:spotify_bloc/data/source/auth/auth_firebase_services.dart';
 import 'package:spotify_bloc/domain/usecases/auth/signup.dart';
 
 import 'data/repositories/auth/auth_repository_impl.dart';

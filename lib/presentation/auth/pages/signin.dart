@@ -37,33 +37,34 @@ class SignInscreen extends StatelessWidget {
             _inputField(context, _email, "Enter Email"),
             _inputField(context, _password, "Enter Password"),
             BasicAppButton(
-                onPressed: () async {
-                  var result = await sl<SignUInUsecase>().call(
-                      params: SigninRequestUser(
-                          email: _email.text.toString(),
-                          password: _password.text.toString()));
-                  result.fold(
-                    (l) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(l.toString()),
-                        ),
-                      );
-                    },
-                    (r) {
-                      log("r $r");
-
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const HomePage(),
-                        ),
-                        (route) => false,
-                      );
-                    },
-                  );
-                },
-                title: "Log in")
+              onPressed: () async {
+                var result = await sl<SignUInUsecase>().call(
+                  params: SigninRequestUser(
+                    email: _email.text.toString(),
+                    password: _password.text.toString(),
+                  ),
+                );
+                result.fold(
+                  (l) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(l.toString()),
+                      ),
+                    );
+                  },
+                  (r) {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => HomePage(),
+                      ),
+                      (route) => false,
+                    );
+                  },
+                );
+              },
+              title: "Log in",
+            )
           ],
         ),
       ),
