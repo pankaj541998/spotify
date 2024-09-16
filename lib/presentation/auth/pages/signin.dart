@@ -108,7 +108,7 @@ class SignInscreen extends StatelessWidget {
                 ),
               );
             },
-            child: const Text('Register Now here '),
+            child: const Text('Register Now '),
           )
         ],
       ),
