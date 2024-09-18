@@ -6,8 +6,10 @@ import 'package:spotify_bloc/core/configs/assets/app_images.dart';
 import 'package:spotify_bloc/core/configs/assets/app_vectors.dart';
 import 'package:spotify_bloc/core/configs/theme/app_colors.dart';
 
+import '../widgets/news_songs.dart';
+
 class HomePage extends StatefulWidget {
-  HomePage({super.key});
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -15,11 +17,11 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
-  late TabController tabController;
+  late TabController _tabController;
   @override
   void initState() {
     super.initState();
-    tabController = TabController(length: 4, vsync: this);
+    _tabController = TabController(length: 4, vsync: this);
   }
 
   @override
@@ -38,6 +40,16 @@ class _HomePageState extends State<HomePage>
           _homeTopCard(),
           const SizedBox(height: 20),
           _tabbar(),
+          const SizedBox(height: 20),
+          SizedBox(
+            height: 260,
+            child: TabBarView(controller: _tabController, children: [
+              NewsSongs(),
+              SizedBox(),
+              SizedBox(),
+              SizedBox(),
+            ]),
+          )
         ],
       ),
     );
@@ -70,26 +82,26 @@ class _HomePageState extends State<HomePage>
 
   Widget _tabbar() {
     return TabBar(
-      controller: tabController,
+      controller: _tabController,
       labelColor: context.isDarkMode ? Colors.white : Colors.black,
       indicatorColor: AppColors.primary,
       dividerHeight: 0,
       // padding:const EdgeInsets.symmetric(vertical: 30,horizontal: 30),
       indicatorSize: TabBarIndicatorSize.label,
       tabs: const [
-         Text(
+        Text(
           "News",
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
         ),
-         Text(
+        Text(
           "Video",
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
         ),
-         Text(
+        Text(
           "Artists",
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
         ),
-         Text(
+        Text(
           "Podcast",
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
         ),
