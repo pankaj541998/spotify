@@ -6,6 +6,7 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:spotify_bloc/core/configs/theme/app_theme.dart';
 import 'package:spotify_bloc/presentation/choose-mode/bloc/theme_cubit.dart';
+import 'package:spotify_bloc/presentation/home/pages/home.dart';
 // import 'package:spotify_bloc/presentation/intro/pages/get_started.dart';
 import 'package:spotify_bloc/presentation/splash/pages/splash.dart';
 
@@ -42,8 +43,8 @@ class MyApp extends StatelessWidget {
           theme: AppTheme.lightTheme,
           themeMode: themeMode,
           darkTheme: AppTheme.darkTheme,
-          home: const SplashScreen(),
-          // home: const GetStartedScreen(),
+          // home: const SplashScreen(),
+          home: const HomePage(),
         ),
       ),
     );

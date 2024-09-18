@@ -4,19 +4,15 @@ import 'package:spotify_bloc/domain/repositories/songs/songs.dart';
 
 import '../../../service_locator.dart';
 
-class SongRepositoryImpl extends SongsRepository{
+class SongRepositoryImpl extends SongsRepository {
   @override
-  Future<Either> getNewSongs()async{
-
+  Future<Either> getNewsSongs() async {
     return await sl<SongFirebaseService>().getNewSongs();
-
-
-    // try {
-
-      
-    // } catch (e) {
-      
-    // }
   }
   
+  @override
+  Future<Either> getPlayList()async {
+    return await sl<SongFirebaseService>().getPlayList();
+  }
+
 }
