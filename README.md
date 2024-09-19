@@ -1,6 +1,6 @@
 # spotify_bloc
 
-A new Flutter project.
+This is like a Spotify app
 
 ## Getting Started
 
