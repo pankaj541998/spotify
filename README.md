@@ -1,17 +1,17 @@
 # spotify_bloc
 
-This is like a Spotify app
+This is like a Spotify app with Bloc state manage of cubit
 
 ## Getting Started
 ##Features of app
 
-->In this app have a feature of light mode and dark mode
+1.In this app have a feature of light mode and dark mode
 
-->Resgistration and Login feature
+2.Resgistration and Login feature
 
-->Use can play and pause the song
+3.Use can play and pause the song
 
-->Make it favourite
+4.Make it favourite
 
 
 
