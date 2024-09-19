@@ -122,7 +122,7 @@ class GetPlayList extends StatelessWidget {
                     style: const TextStyle(fontSize: 16),
                   ),
                   const SizedBox(width: 10),
-                  FavoriteButton(songEntity: songs[index]),
+                  FavouriteButton(songEntity: songs[index]),
                 ],
               )
             ],

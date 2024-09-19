@@ -29,6 +29,6 @@ Future<void>initializeDependencies()async{
   sl.registerSingleton<SignUInUsecase>(SignUInUsecase());
   sl.registerSingleton<GetNewSongsUsecases>(GetNewSongsUsecases());
   sl.registerSingleton<GetPlayListUsecases>(GetPlayListUsecases());
-  sl.registerSingleton<AddRemoveFavoriteSongsUseCase>(AddRemoveFavoriteSongsUseCase());
-  sl.registerSingleton<IsFavoriteSongUsecase>(IsFavoriteSongUsecase());
+  sl.registerSingleton<AddRemoveFavouriteSongsUseCase>(AddRemoveFavouriteSongsUseCase());
+  sl.registerSingleton<IsFavouriteSongUsecase>(IsFavouriteSongUsecase());
 }

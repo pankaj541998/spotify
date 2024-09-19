@@ -6,7 +6,7 @@ class SongModel {
   String? artist;
   dynamic duration;
   Timestamp? releaseDate;
-  bool? isFavorite;
+  bool? isFavourite;
   String? songId;
 
   SongModel({
@@ -14,7 +14,7 @@ class SongModel {
     required this.artist,
     required this.duration,
     required this.releaseDate,
-    required this.isFavorite,
+    required this.isFavourite,
     required this.songId,
   });
 
@@ -33,7 +33,7 @@ extension SongModelX on SongModel {
       artist: artist!,
       duration: duration,
       releaseDate: releaseDate!,
-      isFavorite: isFavorite!,
+      isFavourite: isFavourite!,
       songId: songId!,
     );
   }

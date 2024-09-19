@@ -1,45 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:spotify_bloc/common/bloc/favorite_button/favorite_button_cubit.dart';
-import 'package:spotify_bloc/common/bloc/favorite_button/favorite_button_state.dart';
+
 import 'package:spotify_bloc/domain/entities/songs/songs.dart';
 
 import '../../../core/configs/theme/app_colors.dart';
+import '../../bloc/favorite_button/favorite_button_cubit.dart';
+import '../../bloc/favorite_button/favorite_button_state.dart';
 
-class FavoriteButton extends StatelessWidget {
+class FavouriteButton extends StatelessWidget {
   final SongEntity songEntity;
-  const FavoriteButton({super.key, required this.songEntity});
+  const FavouriteButton({super.key, required this.songEntity});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => FavoriteButtonCubit(),
-      child: BlocBuilder<FavoriteButtonCubit, FavoriteButtonState>(
+      create: (context) => FavouriteButtonCubit(),
+      child: BlocBuilder<FavouriteButtonCubit, FavouriteButtonState>(
         builder: (context, state) {
-          if (state is FavoriteButtonInitalState) {
+          if (state is FavouriteButtonInitalState) {
             return  GestureDetector(
                   onTap: (){
-                    context.read<FavoriteButtonCubit>().favButtonUpdated(songEntity.songId);
+                    context.read<FavouriteButtonCubit>().favButtonUpdated(songEntity.songId);
                   },
                   child: Icon(
-                     songEntity.isFavorite? Icons.favorite:Icons.favorite_outline_rounded,
-                      color: songEntity.isFavorite?AppColors.primary:AppColors.darkGrey,
+                     songEntity.isFavourite? Icons.favorite:Icons.favorite_outline_rounded,
+                      color: songEntity.isFavourite?AppColors.primary:AppColors.darkGrey,
                     ),
                 );
-          } else if (state is FavoriteButtonUpdatedState) {
-            return state.isFavorite
+          } else if (state is FavouriteButtonUpdatedState) {
+            return state.isFavourite
                 ? GestureDetector(
                   onTap: (){
-                    context.read<FavoriteButtonCubit>().favButtonUpdated(songEntity.songId);
+                    context.read<FavouriteButtonCubit>().favButtonUpdated(songEntity.songId);
                   },
-                  child: const Icon(
+                  child:  const Icon(
                       Icons.favorite,
                       color: AppColors.primary,
                     ),
                 )
                 : GestureDetector(
                   onTap: (){
-                    context.read<FavoriteButtonCubit>().favButtonUpdated(songEntity.songId);
+                    context.read<FavouriteButtonCubit>().favButtonUpdated(songEntity.songId);
                   },
                   child: const Icon(
                       Icons.favorite_outline_rounded,

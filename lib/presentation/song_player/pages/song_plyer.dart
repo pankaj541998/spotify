@@ -1,8 +1,5 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:just_audio/just_audio.dart';
 import 'package:spotify_bloc/common/widgets/appbar/basic_appbar.dart';
 import 'package:spotify_bloc/common/widgets/fav_button/favorite_button.dart';
 import 'package:spotify_bloc/domain/entities/songs/songs.dart';
@@ -90,7 +87,7 @@ class SongPlayer extends StatelessWidget {
             )
           ],
         ),
-        FavoriteButton(songEntity: songEntity)
+        FavouriteButton(songEntity: songEntity)
       ],
     );
   }
