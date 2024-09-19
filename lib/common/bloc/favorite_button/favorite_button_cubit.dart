@@ -4,18 +4,18 @@ import 'package:spotify_bloc/service_locator.dart';
 
 import 'favorite_button_state.dart';
 
-class FavoriteButtonCubit extends Cubit<FavoriteButtonState> {
-  FavoriteButtonCubit() : super(FavoriteButtonInitalState());
+class FavouriteButtonCubit extends Cubit<FavouriteButtonState> {
+  FavouriteButtonCubit() : super(FavouriteButtonInitalState());
 
   void favButtonUpdated(String songId) async {
-    var result = await sl<AddRemoveFavoriteSongsUseCase>().call(params: songId);
+    var result = await sl<AddRemoveFavouriteSongsUseCase>().call(params: songId);
 
     result.fold(
       (l) {
 
       },
-      (isFavorite) {
-        emit(FavoriteButtonUpdatedState(isFavorite: isFavorite));
+      (isFavourite) {
+        emit(FavouriteButtonUpdatedState(isFavourite: isFavourite));
       },
     );
   }

@@ -13,7 +13,7 @@ abstract class SongFirebaseService {
   Future<Either> getNewSongs();
   Future<Either> getPlayList();
   Future<Either> addRemoveFavSong(String songId);
-  Future<bool> isFavoriteSong(String songId);
+  Future<bool> isFavouriteSong(String songId);
 }
 
 class SongsFirebaseServiceimpl extends SongFirebaseService {
@@ -28,11 +28,11 @@ class SongsFirebaseServiceimpl extends SongFirebaseService {
           .get();
       for (var element in data.docs) {
         var songsModel = SongModel.fromJson(element.data());
-        var isFavorite= await sl<IsFavoriteSongUsecase>().call(
+        var isFavourite= await sl<IsFavouriteSongUsecase>().call(
           params: element.reference.id
         );
 
-        songsModel.isFavorite = isFavorite;
+        songsModel.isFavourite = isFavourite;
         songsModel.songId = element.reference.id;
         songs.add(songsModel.toEntity());
       }
@@ -55,11 +55,11 @@ class SongsFirebaseServiceimpl extends SongFirebaseService {
       log("returedData of playlist ${data.docs}");
       for (var element in data.docs) {
         var songsModel = SongModel.fromJson(element.data());
-        var isFavorite= await sl<IsFavoriteSongUsecase>().call(
+        var isFavourite= await sl<IsFavouriteSongUsecase>().call(
           params: element.reference.id
         );
 
-        songsModel.isFavorite = isFavorite;
+        songsModel.isFavourite = isFavourite;
         songsModel.songId = element.reference.id;
         songs.add(songsModel.toEntity());
       }
@@ -76,42 +76,42 @@ class SongsFirebaseServiceimpl extends SongFirebaseService {
     try {
       final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
       final FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-      late bool isFavorite;
+      late bool isFavourite;
 
       var user = firebaseAuth.currentUser;
       String uid = user!.uid;
-      QuerySnapshot favoriteSongs = await firebaseFirestore
+      QuerySnapshot FavouriteSongs = await firebaseFirestore
           .collection("Users")
           .doc(uid)
-          .collection('Favorites')
+          .collection('Favourites')
           .where('songId', isEqualTo: songId)
           .get();
 
-      if (favoriteSongs.docs.isNotEmpty) {
-        await favoriteSongs.docs.first.reference.delete();
-        isFavorite = false;
+      if (FavouriteSongs.docs.isNotEmpty) {
+        await FavouriteSongs.docs.first.reference.delete();
+        isFavourite = false;
       } else {
         await firebaseFirestore
             .collection("Users")
             .doc(uid)
-            .collection('Favorites')
+            .collection('Favourites')
             .add(
           {
             'songId': songId,
             'addedDate': Timestamp.now(),
           },
         );
-        isFavorite = true;
+        isFavourite = true;
       }
 
-      return Right(isFavorite);
+      return Right(isFavourite);
     } catch (e) {
       return const Left("Something went wrong, please try again");
     }
   }
   
   @override
-  Future<bool> isFavoriteSong(String songId) async{
+  Future<bool> isFavouriteSong(String songId) async{
     
     try {
       final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
@@ -119,14 +119,14 @@ class SongsFirebaseServiceimpl extends SongFirebaseService {
 
       var user = firebaseAuth.currentUser;
       String uid = user!.uid;
-      QuerySnapshot favoriteSongs = await firebaseFirestore
+      QuerySnapshot FavouriteSongs = await firebaseFirestore
           .collection("Users")
           .doc(uid)
-          .collection('Favorites')
+          .collection('Favourites')
           .where('songId', isEqualTo: songId)
           .get();
 
-      if (favoriteSongs.docs.isNotEmpty) {
+      if (FavouriteSongs.docs.isNotEmpty) {
         return true;
       } else {
         return false;

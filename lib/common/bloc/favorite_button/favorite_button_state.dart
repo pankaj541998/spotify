@@ -1,8 +1,8 @@
-abstract class FavoriteButtonState{}
+abstract class FavouriteButtonState{}
 
-class FavoriteButtonInitalState extends FavoriteButtonState{}
-class FavoriteButtonUpdatedState extends FavoriteButtonState{
-  final bool isFavorite;
+class FavouriteButtonInitalState extends FavouriteButtonState{}
+class FavouriteButtonUpdatedState extends FavouriteButtonState{
+  final bool isFavourite;
 
-  FavoriteButtonUpdatedState({required this.isFavorite}); 
+  FavouriteButtonUpdatedState({required this.isFavourite}); 
 }
