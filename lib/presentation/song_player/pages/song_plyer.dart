@@ -113,7 +113,14 @@ class SongPlayer extends StatelessWidget {
                     .songDuration
                     .inSeconds
                     .toDouble(),
-                onChanged: (v) {},
+                onChanged: (v) {
+
+                  readContext
+                    .songPosition
+                    .inSeconds
+                    .toDouble();
+
+                },
               ),
               const SizedBox(height: 10),
               Row(
