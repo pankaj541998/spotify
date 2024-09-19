@@ -5,9 +5,12 @@ This is like a Spotify app
 ## Getting Started
 ##Features of app
 
-->In this app have a feature of light mode and dark mode 
+->In this app have a feature of light mode and dark mode
+
 ->Resgistration and Login feature
+
 ->Use can play and pause the song
+
 ->Make it favourite
 
 
