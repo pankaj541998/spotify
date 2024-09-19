@@ -4,23 +4,25 @@ import 'package:spotify_bloc/domain/entities/songs/songs.dart';
 class SongModel {
   String? title;
   String? artist;
-  double? duration;
+  dynamic duration;
   Timestamp? releaseDate;
+  bool? isFavorite;
+  String? songId;
 
   SongModel({
     required this.title,
     required this.artist,
     required this.duration,
     required this.releaseDate,
+    required this.isFavorite,
+    required this.songId,
   });
 
-  factory SongModel.fromJson(Map<String, dynamic> json) {
-    return SongModel(
-      title: json["title"],
-      artist: json["artist-name"],
-      duration: json["duration"],
-      releaseDate: json["date"],
-    );
+  SongModel.fromJson(Map<String, dynamic> json) {
+    title = json["title"];
+    artist = json["artist-name"];
+    duration = json["duration"];
+    releaseDate = json["date"];
   }
 }
 
@@ -29,8 +31,10 @@ extension SongModelX on SongModel {
     return SongEntity(
       title: title!,
       artist: artist!,
-      duration: duration!,
+      duration: duration,
       releaseDate: releaseDate!,
+      isFavorite: isFavorite!,
+      songId: songId!,
     );
   }
 }

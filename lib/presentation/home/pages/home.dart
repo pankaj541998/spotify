@@ -6,6 +6,7 @@ import 'package:spotify_bloc/core/configs/assets/app_images.dart';
 import 'package:spotify_bloc/core/configs/assets/app_vectors.dart';
 import 'package:spotify_bloc/core/configs/theme/app_colors.dart';
 
+import '../widgets/get_playlist.dart';
 import '../widgets/news_songs.dart';
 
 class HomePage extends StatefulWidget {
@@ -35,22 +36,28 @@ class _HomePageState extends State<HomePage>
           height: 40,
         ),
       ),
-      body: Column(
-        children: [
-          _homeTopCard(),
-          const SizedBox(height: 20),
-          _tabbar(),
-          const SizedBox(height: 20),
-          SizedBox(
-            height: 260,
-            child: TabBarView(controller: _tabController, children: [
-              NewsSongs(),
-              SizedBox(),
-              SizedBox(),
-              SizedBox(),
-            ]),
-          )
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            _homeTopCard(),
+            const SizedBox(height: 20),
+            _tabbar(),
+            const SizedBox(height: 20),
+            SizedBox(
+              height: 260,
+              child: TabBarView(
+                controller: _tabController,
+                children: const [
+                  NewsSongs(),
+                  SizedBox(),
+                  SizedBox(),
+                  SizedBox(),
+                ],
+              ),
+            ),
+            const GetPlayList()
+          ],
+        ),
       ),
     );
   }

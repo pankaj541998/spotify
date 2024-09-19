@@ -43,8 +43,8 @@ class MyApp extends StatelessWidget {
           theme: AppTheme.lightTheme,
           themeMode: themeMode,
           darkTheme: AppTheme.darkTheme,
-          // home: const SplashScreen(),
-          home: const HomePage(),
+          home: const SplashScreen(),
+          // home: const HomePage(),
         ),
       ),
     );

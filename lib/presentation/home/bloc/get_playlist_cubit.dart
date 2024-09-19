@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../domain/usecases/songs/get_playlist.dart';
@@ -11,7 +9,7 @@ class SongPlayListCubit extends Cubit<PlayListState> {
 
   Future<void> playListSongs() async {
     var returedData = await sl<GetPlayListUsecases>().call();
-    log("returedData $returedData");
+    // log("returedData of playlist $returedData");
     returedData.fold((l) {
       emit(
         PlayListLoadFailure(message: "Something went wrong, Please try again"),
