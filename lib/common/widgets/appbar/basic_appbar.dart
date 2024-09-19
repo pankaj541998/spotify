@@ -6,13 +6,15 @@ import '../../../core/configs/theme/app_colors.dart';
 class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? title ;
   final bool? hideBack;
-  const BasicAppBar({super.key, this.title,this.hideBack=false});
+  final List<Widget>? action;
+  const BasicAppBar({super.key, this.title,this.hideBack=false,this.action});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0,
+      actions:action,
       title: title?? const Text(""),
       centerTitle: true,
       leading: hideBack!?null:IconButton(

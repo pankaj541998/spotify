@@ -3,7 +3,9 @@ import 'package:spotify_bloc/data/repositories/songs/song_repo_impl.dart';
 import 'package:spotify_bloc/data/source/auth/auth_firebase_services.dart';
 import 'package:spotify_bloc/domain/repositories/songs/songs.dart';
 import 'package:spotify_bloc/domain/usecases/auth/signup.dart';
+import 'package:spotify_bloc/domain/usecases/songs/add_remove_fav_song.dart';
 import 'package:spotify_bloc/domain/usecases/songs/get_playlist.dart';
+import 'package:spotify_bloc/domain/usecases/songs/is_fav_song.dart';
 
 import 'data/repositories/auth/auth_repository_impl.dart';
 import 'data/source/song/song_firebase_service.dart';
@@ -27,4 +29,6 @@ Future<void>initializeDependencies()async{
   sl.registerSingleton<SignUInUsecase>(SignUInUsecase());
   sl.registerSingleton<GetNewSongsUsecases>(GetNewSongsUsecases());
   sl.registerSingleton<GetPlayListUsecases>(GetPlayListUsecases());
+  sl.registerSingleton<AddRemoveFavoriteSongsUseCase>(AddRemoveFavoriteSongsUseCase());
+  sl.registerSingleton<IsFavoriteSongUsecase>(IsFavoriteSongUsecase());
 }
