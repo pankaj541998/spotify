@@ -9,7 +9,8 @@ import '../../bloc/favorite_button/favorite_button_state.dart';
 
 class FavouriteButton extends StatelessWidget {
   final SongEntity songEntity;
-  const FavouriteButton({super.key, required this.songEntity});
+  final Function? function;
+  const FavouriteButton({super.key, required this.songEntity,  this.function});
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +20,11 @@ class FavouriteButton extends StatelessWidget {
         builder: (context, state) {
           if (state is FavouriteButtonInitalState) {
             return  GestureDetector(
-                  onTap: (){
-                    context.read<FavouriteButtonCubit>().favButtonUpdated(songEntity.songId);
+                  onTap: () async{
+                   await context.read<FavouriteButtonCubit>().favButtonUpdated(songEntity.songId);
+                    if(function != null){
+                      function!();
+                    }
                   },
                   child: Icon(
                      songEntity.isFavourite? Icons.favorite:Icons.favorite_outline_rounded,
