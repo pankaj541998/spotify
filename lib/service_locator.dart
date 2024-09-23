@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
 import 'package:spotify_bloc/data/repositories/songs/song_repo_impl.dart';
 import 'package:spotify_bloc/data/source/auth/auth_firebase_services.dart';
@@ -16,6 +18,8 @@ import 'domain/usecases/songs/get_songs.dart';
 final sl = GetIt.instance;
 
 Future<void>initializeDependencies()async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
   
   sl.registerSingleton<AuthFirebaseService>(AuthFirebaseServiceImpl());
   sl.registerSingleton<SongFirebaseService>(SongsFirebaseServiceimpl());
