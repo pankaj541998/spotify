@@ -1,14 +1,13 @@
 name: 'Builds - build Flutter APK and create github release'
 description: 'A GitHub Action that builds a Flutter APK'
-author: 'Pankaj'
 
 on:
   push:
     branches:
       - main
-  # pull_request:
-  #   branches:
-  #     - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
