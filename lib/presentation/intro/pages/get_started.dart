@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:spotify_bloc/common/widgets/button/basic_app_button.dart';
 import 'package:spotify_bloc/core/configs/assets/app_images.dart';
@@ -30,43 +29,44 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
             ),
             Container(
               color: Colors.black.withOpacity(0.15),
-            ),Padding(
+            ),
+            Padding(
               padding: const EdgeInsets.all(40.0),
               child: Column(
-                  children: [
-                    Align(
-                        alignment: Alignment.center,
-                        child: SvgPicture.asset(AppVectors.logo)),
-                    const Spacer(),
-                    const Text(
-                      "Enjoy listening to music",
-                      style: TextStyle(
-                          fontSize: 20,
-                          color: AppColors.lightBackground,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    const SizedBox(height: 21),
-                    const Text(
-                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis enim purus sed phasellus. Cursus ornare id scelerisque aliquam.",
-                      style: TextStyle(
-                          fontSize: 17,
-                          color: AppColors.grey,
-                          fontWeight: FontWeight.w500),
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(height: 20),
-                    BasicAppButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const ChooseMode(),
-                            ),
-                          );
-                        },
-                        title: "Get started")
-                  ],
-                ),
+                children: [
+                  Align(
+                      alignment: Alignment.center,
+                      child: SvgPicture.asset(AppVectors.logo)),
+                  const Spacer(),
+                  const Text(
+                    "Enjoy listening to music",
+                    style: TextStyle(
+                        fontSize: 20,
+                        color: AppColors.lightBackground,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 21),
+                  const Text(
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis enim purus sed phasellus. Cursus ornare id scelerisque aliquam.",
+                    style: TextStyle(
+                        fontSize: 17,
+                        color: AppColors.grey,
+                        fontWeight: FontWeight.w500),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 20),
+                  BasicAppButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ChooseMode(),
+                          ),
+                        );
+                      },
+                      title: "Get started")
+                ],
+              ),
             ),
           ],
         ),
